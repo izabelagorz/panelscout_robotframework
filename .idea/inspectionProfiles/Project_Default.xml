@@ -1,0 +1,17 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyStatementEffectInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="pages.dashboard.Dashboard.add_player_button_xpath" />
+          <option value="pages.add_player.component" />
+          <option value="pages.add_player.select" />
+          <option value="pages.add_player.leg" />
+          <option value="pages.add_player.mui" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
