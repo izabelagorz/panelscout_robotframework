@@ -11,6 +11,7 @@ ${PASSWORDINPUT}    xpath=//*[@id='password']
 #${PAGELOGO}    xpath=//div/a[text()='Remind password']
 ${REMINDPASSWORD}    xpath=//div/a[text()='Remind password']
 ${REMINDEMAILINPUT}    xpath=//input
+${IDENTIFERORPASSWORDINVALID}    xpath=//span[text()='Identifier or password invalid.']
 
 *** Test Cases ***
 Login to the system
@@ -33,11 +34,7 @@ Type In Password
     Input Text    ${PASSWORDINPUT}    Test1234
 Click On Submit Button
     Click Element   ${SIGNINBUTTON}
-Click On Remind Button
-    Wait Until Element Is Visible    ${REMINDPASSWORD}
-    Click Element    ${REMINDPASSWORD}
-Type In Email Remaind Password
-    Input Text    ${REMINDEMAILINPUT}    izabelagorz@gmail.com
+
 Assert Dashboard
-    Title Should Be    Remind password
+    Element Text Should Be    Identifier or password invalid.
     Capture Page Screenshot    alert2.png

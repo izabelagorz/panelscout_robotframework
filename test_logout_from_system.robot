@@ -8,9 +8,9 @@ ${BROWSER}    Chrome
 ${SIGNINBUTTON}    xpath=//*[(text()= 'Sign in')]
 ${EMAILINPUT}    xpath=//*[@id='login']
 ${PASSWORDINPUT}    xpath=//*[@id='password']
-#${PAGELOGO}    xpath=//div/a[text()='Remind password']
-${REMINDPASSWORD}    xpath=//div/a[text()='Remind password']
-${REMINDEMAILINPUT}    xpath=//input
+${PAGELOGO}    xpath=//*[@id="__next"]/div[1]/main/div[3]/div[1]/div/div[1]
+${LOGOUTBUTTON}    xpath=//div/span[text()='Sign out']
+${SCOUTSPANELLOGINPAGE}    xpath=//*[@id="__next"]/form/div/div[1]/h5
 
 *** Test Cases ***
 Login to the system
@@ -18,8 +18,7 @@ Login to the system
     Type In Email
     Type In Password
     Click On Submit Button
-    Click On Remind Button
-    Type In Email Remaind Password
+    Click On Logout Button
     Assert Dashboard
     [Teardown]    Close Browser
 
@@ -30,14 +29,15 @@ Open Login Page
 Type In Email
     Input Text    ${EMAILINPUT}    user07@getnada.com
 Type In Password
-    Input Text    ${PASSWORDINPUT}    Test1234
+    Input Text    ${PASSWORDINPUT}    Test-1234
 Click On Submit Button
     Click Element   ${SIGNINBUTTON}
-Click On Remind Button
-    Wait Until Element Is Visible    ${REMINDPASSWORD}
-    Click Element    ${REMINDPASSWORD}
-Type In Email Remaind Password
-    Input Text    ${REMINDEMAILINPUT}    izabelagorz@gmail.com
+
+Click On Logout Button
+    Wait Until Element Is Visible    ${PAGELOGO}
+    Click Element    ${LOGOUTBUTTON}
+
 Assert Dashboard
-    Title Should Be    Remind password
-    Capture Page Screenshot    alert2.png
+    Wait Until Element Is Visible     ${SCOUTSPANELLOGINPAGE}
+    Title Should Be    Scouts panel - sign in
+    Capture Page Screenshot    alert1.png
