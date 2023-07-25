@@ -8,7 +8,9 @@ ${BROWSER}    Chrome
 ${SIGNINBUTTON}    xpath=//*[(text()= 'Sign in')]
 ${EMAILINPUT}    xpath=//*[@id='login']
 ${PASSWORDINPUT}    xpath=//*[@id='password']
-${PAGELOGO}    xpath=//*[@id="__next"]/div[1]/main/div[3]/div[1]/div/div[1]
+#${PAGELOGO}    xpath=//div/a[text()='Remind password']
+${REMINDPASSWORD}    xpath=//div/a[text()='Remind password']
+${REMINDEMAILINPUT}    xpath=//input
 
 *** Test Cases ***
 Login to the system
@@ -33,4 +35,4 @@ Click On Submit Button
 Assert Dashboard
     Wait Until Element Is Visible    ${PAGELOGO}
     Title Should Be    Scouts panel
-    Capture Page Screenshot    alert.png
+    Capture Page Screenshot    alert5.png

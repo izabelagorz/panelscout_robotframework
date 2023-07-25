@@ -8,7 +8,10 @@ ${BROWSER}    Chrome
 ${SIGNINBUTTON}    xpath=//*[(text()= 'Sign in')]
 ${EMAILINPUT}    xpath=//*[@id='login']
 ${PASSWORDINPUT}    xpath=//*[@id='password']
-${PAGELOGO}    xpath=//*[@id="__next"]/div[1]/main/div[3]/div[1]/div/div[1]
+#${PAGELOGO}    xpath=//div/a[text()='Remind password']
+${REMINDPASSWORD}    xpath=//div/a[text()='Remind password']
+${REMINDEMAILINPUT}    xpath=//input
+${IDENTIFERORPASSWORDINVALID}    xpath=//span[text()='Identifier or password invalid.']
 
 *** Test Cases ***
 Login to the system
@@ -19,7 +22,6 @@ Login to the system
     Assert Dashboard
     [Teardown]    Close Browser
 
-
 *** Keywords ***
 Open Login Page
     Open Browser    ${LOGIN URL}    ${BROWSER}
@@ -27,10 +29,9 @@ Open Login Page
 Type In Email
     Input Text    ${EMAILINPUT}    user07@getnada.com
 Type In Password
-    Input Text    ${PASSWORDINPUT}    Test-1234
+    Input Text    ${PASSWORDINPUT}    Test1234
 Click On Submit Button
     Click Element   ${SIGNINBUTTON}
+    Wait Until Element Is Visible    ${IDENTIFERORPASSWORDINVALID}
 Assert Dashboard
-    Wait Until Element Is Visible    ${PAGELOGO}
-    Title Should Be    Scouts panel
-    Capture Page Screenshot    alert.png
+    Capture Page Screenshot    alert4.png
